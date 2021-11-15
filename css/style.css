@@ -1,0 +1,47 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	display: flex;
+	justify-content: center;
+}
+
+.block {
+	display: block;
+	width: 800px;
+}
+
+.control {
+	display: flex;
+}
+
+.field {
+	width: 100%;
+	padding: 5px 15px;
+	margin:  5px 0;
+	border: 1px solid;
+}
+
+.add {
+	padding: 5px 15px;
+	font-size: 20px;
+	background:	transparent;
+	border: 1px solid;
+	margin: 5px auto;
+}
+
+.task {
+	display: flex;
+	padding: 15px;
+	border: 2px solid;
+	margin-top: 15px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.success {
+	text-decoration: line-through;
+}
+
