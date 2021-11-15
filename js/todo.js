@@ -1,34 +1,45 @@
-const field = document.querySelector('.field');
-const button = document.querySelector('.add');
+const [field, button] = [
+	document.querySelector('.field'),
+	document.querySelector('.add'),
+]
 
 button.addEventListener('click', addTask);
 
 function creteTask(value) {
-	const task = document.createElement("div");
-	task.className = 'task';
+	const [checkboxInput, valueText, task] = [
+		document.createElement('input'),
+		document.createElement('p'),
+		document.createElement("div"),
+	]
 
-	const checkboxInput = document.createElement('input');
 	checkboxInput.type = 'checkbox';
-	checkboxInput.checked;
 	checkboxInput.className = 'status';
-	checkboxInput.addEventListener('change', completeTask);
+	checkboxInput.addEventListener('change', changeTask);
 
-	const valueText = document.createElement('p');
 	valueText.append(value);
-	
+
+	task.className = 'task';
 	task.append(valueText, checkboxInput);
 	return task;
 }
 
-function completeTask(event) {
+function changeTask(event) {
 	const target = event.target;
-	target.checked ? target.parentElement.classList.add('success') : target.parentElement.classList.remove('success');
+	if(target.checked) {
+		target.parentElement.classList.add('success')
+	}else {
+		target.parentElement.classList.remove('success')
+	}
 }
 
 function addTask() {
 	if(field.value) {
-		const newTask = creteTask(field.value);
-		document.querySelector('.list').appendChild(newTask);
+		const [newTask, list] = [
+			creteTask(field.value),
+			document.querySelector('.list'),
+		]
+
+		list.appendChild(newTask);
 		field.value = '';
 	}
 }
