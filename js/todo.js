@@ -1,16 +1,12 @@
-const [field, button] = [
-	document.querySelector('.field'),
-	document.querySelector('.add'),
-]
+const field = document.querySelector('.field')
+const button = document.querySelector('.add')
 
 button.addEventListener('click', addTask);
 
 function creteTask(value) {
-	const [checkboxInput, valueText, task] = [
-		document.createElement('input'),
-		document.createElement('p'),
-		document.createElement("div"),
-	]
+	const checkboxInput = document.createElement('input')
+	const valueText = document.createElement('p')
+	const task = document.createElement("div")
 
 	checkboxInput.type = 'checkbox';
 	checkboxInput.className = 'status';
@@ -24,7 +20,7 @@ function creteTask(value) {
 }
 
 function changeTask(event) {
-	const target = event.target;
+	const {target} = event;
 	if(target.checked) {
 		target.parentElement.classList.add('success')
 	}else {
@@ -34,11 +30,8 @@ function changeTask(event) {
 
 function addTask() {
 	if(field.value) {
-		const [newTask, list] = [
-			creteTask(field.value),
-			document.querySelector('.list'),
-		]
-
+		const newTask = creteTask(field.value)
+		const list= document.querySelector('.list')
 		list.appendChild(newTask);
 		field.value = '';
 	}
