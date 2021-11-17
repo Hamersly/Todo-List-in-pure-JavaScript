@@ -45,3 +45,23 @@ body {
 	text-decoration: line-through;
 }
 
+p {
+	word-break: break-all;
+}
+
+.status {
+	margin-left: 5px;
+}
+
+.remove {
+	display: flex;
+	justify-content: center;
+}
+
+.remove-btn {
+	padding: 5px 15px;
+	font-size: 20px;
+	background:	transparent;
+	border: 1px solid;
+	margin: 15px;
+}

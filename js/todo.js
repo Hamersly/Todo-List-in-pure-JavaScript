@@ -1,7 +1,9 @@
 const field = document.querySelector(".field");
-const button = document.querySelector(".add");
+const addButton = document.querySelector(".add");
+const removeButton = document.querySelector(".remove");
 
-button.addEventListener("click", addTask);
+addButton.addEventListener("click", addTask);
+removeButton.addEventListener("click", removeTasks);
 
 function creteTask(value) {
 	const checkboxInput = document.createElement("input");
@@ -16,6 +18,7 @@ function creteTask(value) {
 
 	task.className = "task";
 	task.append(valueText, checkboxInput);
+
 	return task;
 }
 
@@ -30,9 +33,33 @@ function changeTask(event) {
 
 function addTask() {
 	if (field.value) {
-		const newTask = creteTask(field.value);
-		const list = document.querySelector(".list");
-		list.appendChild(newTask);
+		const id = new Date().getTime();
+		localStorage.setItem(id, field.value);
+		addToList(field.value);
 		field.value = "";
 	}
 }
+
+function addToList(text) {
+	const newTask = creteTask(text);
+	const list = document.querySelector(".list");
+	list.appendChild(newTask);
+}
+
+function runTaskList() {
+	const keys = Object.keys(localStorage).sort();
+	for (let key of keys) {
+		const taskText = localStorage.getItem(key);
+		addToList(taskText);
+	}
+}
+
+function removeTasks() {
+	localStorage.clear();
+	const list = document.querySelector(".list");
+	while (list.firstChild) {
+		list.removeChild(list.firstChild);
+	}
+}
+
+runTaskList();
