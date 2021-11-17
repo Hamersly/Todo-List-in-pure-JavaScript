@@ -48,18 +48,16 @@ function addToList(text) {
 
 function runTaskList() {
 	const keys = Object.keys(localStorage).sort();
-	for (let key of keys) {
+	keys.forEach((key) => {
 		const taskText = localStorage.getItem(key);
 		addToList(taskText);
-	}
+	});
 }
 
 function removeTasks() {
 	localStorage.clear();
 	const list = document.querySelector(".list");
-	while (list.firstChild) {
-		list.removeChild(list.firstChild);
-	}
+	list.innerHTML = "";
 }
 
 runTaskList();
